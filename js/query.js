@@ -18,9 +18,12 @@ $(document).ready(function () {
       }
       c = currentScrollTop;
   });
-   $(".show_me").click(()=>{
-     $("nav ul.navbar-menu").toggleClass("hide")
-   })
+  
     
+$(".show_me").click(function(){
+  $(".navbar-menu").toggleClass("hide")
+});
+
+
 
 });

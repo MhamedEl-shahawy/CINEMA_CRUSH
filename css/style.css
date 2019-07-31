@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600,700|Poppins:300,800|Roboto:300i,400,500,700");
 @import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
 
+:root {
+  --primary-color: #e50914;
+  --dark-color: #141414;
+  --light-color: #f4f4f4;
+}
 
 * {
   padding: 0;
@@ -12,6 +17,8 @@ ul {
 }
 a{
    text-decoration: none;
+   color:#fff;
+
 }
 img{
    max-width:100%; 
@@ -26,14 +33,12 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #000;
     color: #fff;
+   -webkit-font-smoothing: antialiased;
     margin: 0 auto;
-    height: 100%;
     width: 100%;
+    height: 100%;
     position: relative;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
+  
     overflow-x: hidden;
 }
 /* start loader*/
@@ -117,6 +122,8 @@ nav ul.navbar-menu {
   padding: 0;
   display: inline-block;
   float: right;
+   transition-duration:0.5s;
+
 }
 
 nav ul.navbar-menu li {
@@ -188,7 +195,7 @@ nav button span {
 
 }
 /* start movies */
-#movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming{
+#movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#tv_show,#cast_same{
    position: relative;
    width:100%;
    padding:2.5em;  
@@ -201,6 +208,10 @@ nav button span {
    width:100%;
    height: 100%; 
    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.well_box a{
+   text-shadow: 0 0 35px #000, 0 0 25px #000, 0 0 15px #000, 0 0 5px #000, 0 0 5px #000;
+   text-transform: uppercase; 
 }
 .well_box a img{
    width: 100%;
@@ -285,7 +296,11 @@ nav button span {
 }
 ul li{
    line-height:1.5; 
+   transition-duration:0.5s; 
 }
+.navbar-menu  li:hover{
+     border-bottom: 1px dotted #555;
+   }
 ul li strong{
    color:#777;
    font-family: 'Darker Grotesque', sans-serif;  
@@ -295,6 +310,14 @@ ul li strong{
 ul li span{
        border-bottom: 1px dotted #555;
 }
+.cast{
+  display: inline-block;
+}
+.cast a{
+       border-bottom: 1px dotted #555;
+       display: inline-block;
+       cursor: pointer;
+ }
 .details{
    margin-top:0.5em; 
 }
@@ -307,6 +330,7 @@ ul li span{
 .details h3{
    color:#666;
    margin-bottom: 1em;
+   margin-top: 1em;
    font-family: light;  
 }
 
@@ -314,7 +338,8 @@ ul li span{
   color:#ccc;
    font-family: 'Darker Grotesque', sans-serif;  
    margin-top:0.5em;
-   font-size:1.2em;   
+   font-size:1.2em;  
+   margin-bottom:0.5em;  
 }
 .inline{
   display: inline-block;
@@ -338,6 +363,31 @@ ul li span{
    left:0;   
    background-color:rgba(0,0,0,0.9);     
    padding:2em; 
+}
+/*close */
+.close {
+    background: #2d3436;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top:2%; 
+}
+.close:after {
+    content: '';
+    height: 60px;
+    border-left: 2px solid #fff;
+    position: absolute;
+    transform: rotate(45deg);
+    left: 28px;
+}
+
+.close:before {
+    content: '';
+    height: 60px;
+    border-left: 2px solid #fff;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 28px;
 }
 
 .main_movies{
@@ -368,98 +418,25 @@ form input[type=search] {
   padding: 0.5em;
   transition: all 2s ease-in;
   width: 45vw;
-  z-index: 999;
+  z-index: 988;
 }
-
-
-
-/* start footer */
-footer{
-  width:100%;
-  height:auto;
-     background-color:#111;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  grid-gap:20px; 
-  padding:3em;
-}
-footer ul li{
-  list-style:none;
-  font-size:1em;
-  font-family:sans;
-  line-height:30px;
-  transition:0.5s;
-      color: #fff;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-}
-footer ul li p{
-  font-size:0.82em;
-}
-footer ul li a{
-  color: #fff;
-  transition: 0.5s;
-}
-footer ul li:hover{
-    color: #ff1481;
-}
-footer input {
-    height: 40px;
-    border: none;
-    width: 67% ;
-    font-weight: 400;
-    background: #fff;
-    padding-left: 20px;
-    border-radius: 0;
-    font-size: 13px;
-    padding: 10px 20px;
-    color: #999999;
-    border: 0px solid transparent;
-    font-family: "Lora", serif;
-    outline: none;
-}
-footer h3 {
-  color:#fff;
-  font-weight: bolder;
-  text-transform: uppercase; 
-}
-
-footer .btn {
-    margin-top: 23px;
-    background-color: #ff1481;
-    color: #fff;
-    width: 49px;
-    border-radius: 0px;
-    height: 40px;
-    outline: none;
-    border: 0;
-}
-
-footer img{
-   margin-top:1em;
-   margin-bottom:1em; 
-
+.cast{
+   padding-right:0.5em; 
 }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+@media(max-height: 600px) {
+  .showcase-content {
+  margin-top: 3rem;
+}
+}
 
 @media only screen and (min-width: 320px) and (max-width: 760px){
- #movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming{
-    display: block;
+ #movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#tv_show,#cast_same{
+   display: block;      
  }
  .well_box{
    margin-bottom:1em; 
@@ -473,12 +450,19 @@ footer img{
  .movie_info{
    display: block;
  }
-}
+ .movie_info img{
+   width:100%;
+   height:100%;  
+ }
 
-
-
-@media (max-width: 900px) {
-  nav ul.navbar-menu {
+ .info h2{
+   margin-top:3em;
+  }
+  #searchForm input{
+     width:80vw;
+     font-size: 1.5em; 
+  }
+nav ul.navbar-menu {
     display: block;
     position: absolute;
     background: #111;
@@ -491,36 +475,55 @@ footer img{
      width:50%;
      line-height:2;
         transition:0.5s all; 
-
-
   }
-  nav ul.navbar-menu li:hover{
-  border-bottom: 1px dotted #555;
 
-  }
+  
   
   nav button {
     display: block;
   }
-  #movies,#movies_same{
+   .movie_info{
+   display: block;
+ }
+ .hide{
+   visibility: hidden;
+   opacity: 0;
+   display: none;
+   transition-duration:0.5s;
+}
+}
+
+
+
+@media only screen and (min-width:761px) and (max-width: 900px){
+  #movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#cast_same{
    grid-template-columns:repeat(3,1fr);
    grid-gap:20px;  
  }
  .movie_info{
    display: block;
  }
-  footer{
- display: block;
- padding-left:0;
-}
-footer ul{
-   width:100%; 
-}
-footer p{
- width: 70%;
-}
-footer .last{
-  width:100%; 
+  nav  .container{
+     width:90%; 
+  }
+   
+
+ 
+
+  
+  .footer .footer-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  
+
+
+  .hide{
+   visibility: hidden;
+   opacity: 0;
+   display: none;
+   transition-duration:0.5s;
 }
 }
 
@@ -542,6 +545,9 @@ footer .last{
 /* end loader*/
 
 
-.hide{
+.hide_poster{
+   visibility: hidden;
+   opacity: 0;
    display: none;
+   transition-duration:0.5s;
 }
