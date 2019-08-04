@@ -20,6 +20,7 @@ a{
    color:#fff;
 
 }
+
 img{
    max-width:100%; 
 }
@@ -491,6 +492,7 @@ nav ul.navbar-menu {
    display: none;
    transition-duration:0.5s;
 }
+
 }
 
 

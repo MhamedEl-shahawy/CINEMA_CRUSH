@@ -282,6 +282,7 @@ function getMovie(){
           </div>  
        
       `;
+      output+=`<div class="sharethis-inline-share-buttons"></div>`;
       output+= `<div class="info">
          <h2>Recomendations Movies to ${movie.title}</h2>
        </div>`
