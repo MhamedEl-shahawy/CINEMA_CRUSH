@@ -196,13 +196,14 @@ nav button span {
 
 }
 /* start movies */
-#movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#tv_show,#cast_same{
+#movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#tv_show,#cast_same,#trend{
    position: relative;
    width:100%;
    padding:2.5em;  
   width: 100%;
    display: grid;
    grid-template-columns:repeat(5,1fr); 
+   grid-gap:5px; 
 }
 .well_box{
    position: relative;
@@ -230,6 +231,7 @@ nav button span {
     box-shadow: 0 0 40px rgba(0,0,0,0.7) inset, 0 0 10px rgba(0,0,0,0.5), 0 0 60px rgba(255,255,255,0.25);
     opacity: 0;
     z-index: 1;
+
 }    
 .well_box span {
     width: 100%;
@@ -424,8 +426,30 @@ form input[type=search] {
 .cast{
    padding-right:0.5em; 
 }
-
-
+.reviews {
+    background-color: #111;
+    background-color: rgba(17,17,17,0.8);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+.reviews div {
+    margin-bottom: 20px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.reviews .avatar {
+    width: 60px;
+}
+.reviews td {
+    vertical-align: middle;
+    padding: 6px;
+}
+.reviews p {
+    line-height: 1.3;
+    margin-top: 6px;
+}
 
 
 
@@ -436,7 +460,7 @@ form input[type=search] {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 760px){
- #movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#tv_show,#cast_same{
+ #movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#tv_show,#cast_same,#trend{
    display: block;      
  }
  .well_box{
@@ -498,7 +522,7 @@ nav ul.navbar-menu {
 
 
 @media only screen and (min-width:761px) and (max-width: 900px){
-  #movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#cast_same{
+  #movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#cast_same,#trend{
    grid-template-columns:repeat(3,1fr);
    grid-gap:20px;  
  }
@@ -506,7 +530,7 @@ nav ul.navbar-menu {
    display: block;
  }
   nav  .container{
-     width:90%; 
+     width:95%; 
   }
    
 
@@ -521,12 +545,12 @@ nav ul.navbar-menu {
   
 
 
-  .hide{
-   visibility: hidden;
-   opacity: 0;
-   display: none;
-   transition-duration:0.5s;
+  
 }
+@media only screen and (min-width:1100px){
+   .well_box div{
+    border:2px dashed #fff; 
+   }
 }
 
 /* Define the animation called bouncingLoader. */

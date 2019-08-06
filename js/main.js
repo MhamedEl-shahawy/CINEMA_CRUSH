@@ -1,4 +1,6 @@
+let get_Ip="";
 $(document).ready(() => {
+
   $('#searchForm').keyup((e) => {
     let searchText = $('#searchText').val();
     getMovies(searchText);
@@ -10,6 +12,7 @@ $(document).ready(() => {
    popular();
    coming();
    tv_show();
+   trend();
   }
 
   
@@ -18,7 +21,6 @@ $(document).ready(() => {
 function getMovies(searchText){
   axios.get(`https://api.themoviedb.org/3/search/multi?query=${searchText}&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
     .then((response) => {
-      console.log(response);
       let movies = response.data.results;
       let output = '';
       $.each(movies, (index, movie) => {
@@ -27,7 +29,7 @@ function getMovies(searchText){
             <div class="well_box">
               <a onclick="movieSelected('${movie.id}');" href="#">
                <div>
-               <span>${movie.name}</span>
+               <span>${movie.title || movie.name}</span>
               </div>
               <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
               </a>
@@ -49,7 +51,6 @@ function getMovies(searchText){
 function getMovies2(){
   axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=400225a1886f38d9cf3c934d6a756c4d`) 
     .then((response) => {
-      console.log(response);
       let movies = response.data.results;
       let output = '';
       $.each(movies, (index, movie) => {
@@ -78,7 +79,6 @@ function getMovies2(){
 function popular(){
   axios.get(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
     .then((response) => {
-      console.log(response);
       let movies = response.data.results;
       let output = '';
       $.each(movies, (index, movie) => {
@@ -107,7 +107,6 @@ function popular(){
 function topRated(){
   axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
     .then((response) => {
-      console.log(response);
       let movies = response.data.results;
       let output = '';
       $.each(movies, (index, movie) => {
@@ -137,7 +136,6 @@ function topRated(){
 function coming(){
   axios.get(`https://api.themoviedb.org/3/movie/upcoming?page=1&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
     .then((response) => {
-      console.log(response);
       let movies = response.data.results;
       let output = '';
       $.each(movies, (index, movie) => {
@@ -166,7 +164,6 @@ function coming(){
 function tv_show(){
   axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=400225a1886f38d9cf3c934d6a756c4d`) 
     .then((response) => {
-      console.log(response);
       let movies = response.data.results;
       let output = '';
       $.each(movies, (index, movie) => {
@@ -191,6 +188,34 @@ function tv_show(){
       console.log(err);
     });
 }
+/* get trend*/
+function trend(){
+  axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      let output = '';
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}')" href="#">
+               <div>
+               <span>${movie.original_title || movie.original_name}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#trend').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 function movieSelected(id){
   sessionStorage.setItem('movieId', id);
@@ -198,11 +223,13 @@ function movieSelected(id){
   return false;
 }
 
+  
 
 
+function getMovie(data,i){
+  let movieId = sessionStorage.getItem('movieId'); 
 
-function getMovie(){
-  let movieId = sessionStorage.getItem('movieId');  
+/*  axios.get(`https://videospider.in/getticket.php?key=FQrJeZSH1wgYmjhl&secret_key=g687ywtcgl3depxd89ftkyqn3rn2xg&video_id=tt2316204&ip='.$_SERVER["REMOTE_ADDR"]`)*/
   axios.get(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=videos%2Ccredits%2Creviews&api_key=400225a1886f38d9cf3c934d6a756c4d`)
     .then((response) => {
       console.log(response);
@@ -210,17 +237,23 @@ function getMovie(){
       let result = response.data.videos;
       let geners = response.data.genres;
       let geners_id = response.data.id;
+      let imdbid = response.data.imdb_id;
       let credit = response.data.credits.cast;
       let geners_names = geners.map((x,index) => geners[index].name);
       let cast_names = credit.map((x,index) => credit[index].name);
       let cast_ids = credit.map((x,index) => credit[index].id);
       let elecast="";
+      let getme ="";
       let country = response.data.production_countries.map((x,index) => response.data.production_countries[index].name);
       let company = response.data.production_companies.map((x,index) => response.data.production_companies[index].name);
        $.each(cast_names, (index, name) => {
               elecast += `<li class="list-group-item cast"><a onclick="castSelected('${cast_ids[index]}')">${name}</a></li>`;
         });
-      let style = {
+  
+
+    /*let get_tickets_movies =
+*/
+     let style = {
            "background":`url(https://image.tmdb.org/t/p/original${movie.poster_path})`,     
           "background-repeat": "no-repeat",
     "background-position":"center center",
@@ -254,6 +287,7 @@ function getMovie(){
               <li class="list-group-item"><strong>Release Date:</strong> ${movie.release_date}</li>
               <li class="list-group-item inline"><a class="show_video"  onclick="myFunction2()">Play Trailer</a></li>
               <li class="list-group-item inline"><a class="show_poster"  onclick="myFunction()"> - Poster</a></li>
+              <li class="list-group-item inline"><a class="show_video"  onclick="myFunction3()"> - Watch</a></li>
             </ul>
             <div class="details">
             <h3>Cast</h3>
@@ -279,10 +313,16 @@ function getMovie(){
           <div class="intro  hide_poster" id="intro_video">
              <a class="close" onclick="myFunction2()"></a> 
              <iframe  class="youtube-video" style="height:70%;width:80%;" src="https://www.youtube.com/embed/${result.results[0].key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div> 
+          <div class="intro  hide_poster" id="intro_movie">
+             <a class="close" onclick="myFunction3()"></a> 
+             <iframe  class="youtube-video" style="height:70%;width:80%;" src="https://vidsrc.me/embed/${imdbid}/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>  
+        
        
       `;
-      output+=`<div class="sharethis-inline-share-buttons"></div>`;
+      /*output+=`<div class="sharethis-inline-share-buttons"></div>`;*/
+      
       output+= `<div class="info">
          <h2>Recomendations Movies to ${movie.title}</h2>
        </div>`
@@ -292,13 +332,11 @@ function getMovie(){
       console.log(err);
     });
       
-
      let movie_id =sessionStorage.getItem('id_name');
-     
 
+  
   axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/recommendations?api_key=400225a1886f38d9cf3c934d6a756c4d`)
     .then((response) => {
-      console.log(response);
         let movies = response.data.results;
       let output_same = '';
       $.each(movies, (index, movie) => {
@@ -333,6 +371,10 @@ function myFunction2() {
   var element = document.getElementById("intro_video");
   element.classList.toggle("hide_poster");
 }
+function myFunction3() {
+  var element = document.getElementById("intro_movie");
+  element.classList.toggle("hide_poster");
+}
 
 /* get cast movies */
 function castSelected(id){
@@ -344,7 +386,6 @@ function getCast(){
   let castid = sessionStorage.getItem('castId');  
   axios.get(`https://api.themoviedb.org/3/person/${castid}?api_key=400225a1886f38d9cf3c934d6a756c4d`)
     .then((response) => {
-      console.log(response);
       let movie = response.data;
      
       let style = {
@@ -407,7 +448,6 @@ function getCast(){
   let person =sessionStorage.getItem('castId');
   axios.get(`https://api.themoviedb.org/3/person/${person}/movie_credits?api_key=400225a1886f38d9cf3c934d6a756c4d`)
     .then((response) => {
-      console.log(response);
         let movies = response.data.cast;
       let output_same = '';
       $.each(movies, (index, movie) => {
