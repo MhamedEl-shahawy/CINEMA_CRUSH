@@ -349,11 +349,21 @@ ul li span{
   color: #fff;
   border-bottom: 1px dotted #555;
   margin-right:0.5em; 
+  margin-top:1em;
+  margin-bottom:1em; 
+
 }
 .inline a{
   color: #fff;
   cursor: pointer;
 }
+.inline_watch a{
+  color:#d63031;
+  font-size:1.3em;
+  font-weight: bolder; 
+  
+}
+
 .intro{
    width:100%;
    height:100vh;
@@ -396,6 +406,7 @@ ul li span{
 .main_movies{
    background-color:rgba(0,0,0,0.6); 
 }
+
 /* search icon */
 .jumbotron{
    position: relative;

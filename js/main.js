@@ -79,6 +79,7 @@ function getMovies2(){
 function popular(){
   axios.get(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
     .then((response) => {
+      console.log(response)
       let movies = response.data.results;
       let output = '';
       $.each(movies, (index, movie) => {
@@ -246,7 +247,7 @@ function getMovie(data,i){
       let getme ="";
       let country = response.data.production_countries.map((x,index) => response.data.production_countries[index].name);
       let company = response.data.production_companies.map((x,index) => response.data.production_companies[index].name);
-       $.each(cast_names, (index, name) => {
+       $.each(cast_names.slice(0,11), (index, name) => {
               elecast += `<li class="list-group-item cast"><a onclick="castSelected('${cast_ids[index]}')">${name}</a></li>`;
         });
   
@@ -286,8 +287,8 @@ function getMovie(data,i){
               <li class="list-group-item"><strong>Genre:</strong> ${geners_names}</li>
               <li class="list-group-item"><strong>Release Date:</strong> ${movie.release_date}</li>
               <li class="list-group-item inline"><a class="show_video"  onclick="myFunction2()">Play Trailer</a></li>
-              <li class="list-group-item inline"><a class="show_poster"  onclick="myFunction()"> - Poster</a></li>
-              <li class="list-group-item inline"><a class="show_video"  onclick="myFunction3()"> - Watch</a></li>
+              <li class="list-group-item inline"><a class="show_poster"  onclick="myFunction()">  Poster</a></li>
+              <li class="list-group-item inline inline_watch"><a class="show_video"   onclick="myFunction3()"> Watch</a></li>
             </ul>
             <div class="details">
             <h3>Cast</h3>
