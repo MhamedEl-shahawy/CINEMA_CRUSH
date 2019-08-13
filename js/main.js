@@ -201,7 +201,7 @@ function trend(){
         output += `
           <div class="col-grid">
             <div class="well_box">
-              <a onclick="movieSelected('${movie.id}')" href="#">
+              <a onclick="callAll('${movie.id}','${movie.media_type}')" href="#">
                <div>
                <span>${movie.original_title || movie.original_name}</span>
               </div>
