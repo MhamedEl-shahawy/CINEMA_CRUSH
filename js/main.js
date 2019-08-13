@@ -221,7 +221,7 @@ function trend(){
 }
 function movieSelected(id){
   sessionStorage.setItem('movieId', id);
-  window.location = 'movie.html';
+  window.location = `movie.html`;
   return false;
 }
 
@@ -368,7 +368,7 @@ function getTv(){
             <div class="well_box">
               <a onclick="tvSelected('${movie.id}')" href="#">
                <div>
-               <span>${movie.name}</span>
+               <span>${movie.name  || movie.original_name}</span>
               </div>
               <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
               </a>
@@ -393,7 +393,7 @@ function getTv(){
 
 function getMovie(data,i){
   let movieId = sessionStorage.getItem('movieId'); 
-
+  
 /*  axios.get(`https://videospider.in/getticket.php?key=FQrJeZSH1wgYmjhl&secret_key=g687ywtcgl3depxd89ftkyqn3rn2xg&video_id=tt2316204&ip='.$_SERVER["REMOTE_ADDR"]`)*/
   axios.get(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=videos%2Ccredits%2Creviews&api_key=400225a1886f38d9cf3c934d6a756c4d`)
     .then((response) => {
@@ -508,7 +508,7 @@ function getMovie(data,i){
             <div class="well_box">
               <a onclick="movieSelected('${movie.id}')" href="#">
                <div>
-               <span>${movie.title}</span>
+               <span>${movie.title  || movie.original_name}</span>
               </div>
               <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
               </a>
@@ -610,7 +610,7 @@ function getCast(){
             <div class="well_box">
               <a onclick="callAll('${movie.id}','${movie.media_type}')" href="#">
                <div>
-               <span>${movie.title}</span>
+               <span>${movie.title  || movie.original_name}</span>
               </div>
               <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
               </a>
@@ -675,3 +675,4 @@ function change(num,imdbid){
     secondChoice = $("#second-choice").val();
     
       }
+

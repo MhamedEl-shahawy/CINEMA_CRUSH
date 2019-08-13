@@ -2,12 +2,14 @@ $(window).load(function() {
 		
  
     setTimeout(function(){
-        $(".loader").fadeOut("slow");
+        $(".welcome").fadeOut("slow");
         $("nav").css("position","fixed");
         $('.main').css('opacity','1');
-    }, 3000);
+    }, 3300);
  
-});
+})
+
+
 
 
           
