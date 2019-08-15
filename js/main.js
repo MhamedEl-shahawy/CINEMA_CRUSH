@@ -22,8 +22,9 @@ $(document).ready(() => {
 });
 
 function getMovies(searchText){
-  axios.get(`https://api.themoviedb.org/3/search/multi?query=${searchText}&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
+  axios.get(`https://api.themoviedb.org/3/search/multi?query=${searchText}&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
     .then((response) => {
+      console.log(response);
       let movies = response.data.results;
       let output = '';
       $.each(movies, (index, movie) => {
@@ -52,10 +53,10 @@ function getMovies(searchText){
 
 
 function getMovies2(){
-  axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    let output = '';
+  axios.get(`https://api.themoviedb.org/3/movie/now_playing?page=1&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
     .then((response) => {
       let movies = response.data.results;
-      let output = '';
       $.each(movies, (index, movie) => {
         output += `
           <div class="col-grid">
@@ -77,13 +78,110 @@ function getMovies2(){
     .catch((err) => {
       console.log(err);
     });
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?page=2&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}');" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  axios.get(`https://api.themoviedb.org/3/movie/now_playing?page=3&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}');" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+axios.get(`https://api.themoviedb.org/3/movie/now_playing?page=4&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}');" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?page=5&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}');" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
 }
 /* popular */
 function popular(){
-  axios.get(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
+    let output = '';
+  axios.get(`https://api.themoviedb.org/3/discover/movie?page=1&sort_by=popularity.desc&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
     .then((response) => {
       let movies = response.data.results;
-      let output = '';
       $.each(movies, (index, movie) => {
         output += `
           <div class="col-grid">
@@ -105,13 +203,62 @@ function popular(){
     .catch((err) => {
       console.log(err);
     });
+    axios.get(`https://api.themoviedb.org/3/discover/movie?page=2&sort_by=popularity.desc&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}');" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies_popular').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axios.get(`https://api.themoviedb.org/3/discover/movie?page=3&sort_by=popularity.desc&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}');" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies_popular').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
 }
 /* Top rated*/
 function topRated(){
-  axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
+  let output = '';
+  axios.get(`https://api.themoviedb.org/3/movie/top_rated?page=1&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
     .then((response) => {
       let movies = response.data.results;
-      let output = '';
       $.each(movies, (index, movie) => {
         output += `
           <div class="col-grid">
@@ -133,14 +280,111 @@ function topRated(){
     .catch((err) => {
       console.log(err);
     });
+    axios.get(`https://api.themoviedb.org/3/movie/top_rated?page=2&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}')" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies_rated').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+   axios.get(`https://api.themoviedb.org/3/movie/top_rated?page=3&api_key=400225a1886f38d9cf3c934d6a756c4d&fbclid=IwAR1lZ_KgIDSQB2fMiSK--vCOv_3N1gIl4oLryfQaGjDyXOyr-4dKp6U5mkM`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}')" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies_rated').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
 }
 
 /* up comong*/
 function coming(){
+  let output = '';
   axios.get(`https://api.themoviedb.org/3/movie/upcoming?page=1&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
     .then((response) => {
       let movies = response.data.results;
-      let output = '';
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}')" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies_coming').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axios.get(`https://api.themoviedb.org/3/movie/upcoming?page=2&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="movieSelected('${movie.id}')" href="#">
+               <div>
+               <span>${movie.title}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#movies_coming').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axios.get(`https://api.themoviedb.org/3/movie/upcoming?page=3&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
       $.each(movies, (index, movie) => {
         output += `
           <div class="col-grid">
@@ -165,10 +409,82 @@ function coming(){
 }
 /* tv show*/
 function tv_show(){
-  axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    let output = '';
+  axios.get(`https://api.themoviedb.org/3/tv/on_the_air?page=1&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
     .then((response) => {
       let movies = response.data.results;
-      let output = '';
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="tvSelected('${movie.id}')" href="#">
+               <div>
+               <span>${movie.name}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#tv_show').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+     axios.get(`https://api.themoviedb.org/3/tv/on_the_air?page=2&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="tvSelected('${movie.id}')" href="#">
+               <div>
+               <span>${movie.name}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#tv_show').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+     axios.get(`https://api.themoviedb.org/3/tv/on_the_air?page=3&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="tvSelected('${movie.id}')" href="#">
+               <div>
+               <span>${movie.name}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#tv_show').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+     axios.get(`https://api.themoviedb.org/3/tv/on_the_air?page=4&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
       $.each(movies, (index, movie) => {
         output += `
           <div class="col-grid">
@@ -193,15 +509,114 @@ function tv_show(){
 }
 /* get trend*/
 function trend(){
-  axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+  let output = '';
+  axios.get(`https://api.themoviedb.org/3/trending/all/week?page=1&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
     .then((response) => {
       let movies = response.data.results;
-      let output = '';
       $.each(movies, (index, movie) => {
         output += `
           <div class="col-grid">
             <div class="well_box">
               <a onclick="callAll('${movie.id}','${movie.media_type}')" href="#">
+<<<<<<< HEAD
+=======
+               <div>
+               <span>${movie.original_title || movie.original_name}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#trend').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axios.get(`https://api.themoviedb.org/3/trending/all/week?page=2&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="callAll('${movie.id}','${movie.media_type}')" href="#">
+               <div>
+               <span>${movie.original_title || movie.original_name}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#trend').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axios.get(`https://api.themoviedb.org/3/trending/all/week?page=3&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="callAll('${movie.id}','${movie.media_type}')" href="#">
+               <div>
+               <span>${movie.original_title || movie.original_name}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#trend').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axios.get(`https://api.themoviedb.org/3/trending/all/week?page=4&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="callAll('${movie.id}','${movie.media_type}')" href="#">
+               <div>
+               <span>${movie.original_title || movie.original_name}</span>
+              </div>
+              <img src="https://image.tmdb.org/t/p/original${movie.poster_path}">
+              </a>
+            
+            </div>
+          </div>
+        `;
+      });
+
+      $('#trend').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axios.get(`https://api.themoviedb.org/3/trending/all/week?page=5&api_key=400225a1886f38d9cf3c934d6a756c4d`) 
+    .then((response) => {
+      let movies = response.data.results;
+      $.each(movies, (index, movie) => {
+        output += `
+          <div class="col-grid">
+            <div class="well_box">
+              <a onclick="callAll('${movie.id}','${movie.media_type}')" href="#">
+>>>>>>> add more movies
                <div>
                <span>${movie.original_title || movie.original_name}</span>
               </div>
@@ -301,6 +716,8 @@ function getTv(){
               <li class="list-group-item"><strong>Release Date:</strong> ${movie.last_air_date}</li>
               <li class="list-group-item"><strong>Select Season To Watch :</strong>
               <select id="first-choice" onchange="change('${episode_count}','${imdbid}')">
+                <option value="special">special</option>
+
                ${season}
             </select> 
             <select id="second-choice" onchange="change_espiosd()">
@@ -676,3 +1093,14 @@ function change(num,imdbid){
     
       }
 
+ window.addEventListener('keyup',(e)=>{
+  console.log(e.key)
+      if(e.key == "W" || e.key =="w"){
+            var element = document.getElementById("intro_movie");
+  element.classList.toggle("hide_poster");  
+       }else if(e.key == "t" || e.key == "T"){
+         
+         var element = document.getElementById("intro_video");
+  element.classList.toggle("hide_poster");
+       }
+    })

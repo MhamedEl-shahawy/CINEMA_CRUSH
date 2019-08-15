@@ -19,7 +19,7 @@ ul {
 a{
    text-decoration: none;
    color:#fff;
-
+  outline: none;
 }
 
 img{
@@ -43,12 +43,13 @@ body {
   
     overflow-x: hidden;
 }
+
 /* start loader*/
 .welcome {
   height: 100vh;
   width: 100vw;
   position: absolute;
-  background: #4A4A4A;
+  background: #1e272e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,8 +124,8 @@ nav a span{
    font-weight: bolder;
 }
 nav {
-  background: #111;
-  height: 80px;
+  background: #000;
+  height: 73px;
   line-height: 80px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   top: 0;
@@ -132,7 +133,6 @@ nav {
   width: 100%;
   z-index: 999;
   transition: all 0.5s;
-
 }
 
 nav.scrollUp {
@@ -216,15 +216,23 @@ nav button span {
    text-shadow: 0 0 35px #000, 0 0 25px #000, 0 0 15px #000, 0 0 5px #000, 0 0 5px #000;
 
 }
+.slide_info{
+     margin-top:8em; 
+    width:100%; 
+   text-align: center;
+
+}
 /* start movies */
 #movies,#movies_same,#movies_search,#movies_rated,#movies_popular,#movies_coming,#tv_show,#cast_same,#trend{
    position: relative;
-   width:100%;
    padding:2.5em;  
   width: 100%;
    display: grid;
-   grid-template-columns:repeat(5,1fr); 
-   grid-gap:5px; 
+    grid-template-columns: repeat(6,1fr);
+}
+.row div:nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 .well_box{
    position: relative;
@@ -456,7 +464,7 @@ form input[type=search] {
   padding: 0.5em;
   transition: all 2s ease-in;
   width: 45vw;
-  z-index: 988;
+  z-index: 9;
 }
 .cast{
    padding-right:0.5em; 
@@ -571,10 +579,7 @@ nav ul.navbar-menu {
 
  
 
-  
-  .footer .footer-cols {
-    grid-template-columns: repeat(2, 1fr);
-  }
+ 
 
 
   
@@ -582,11 +587,7 @@ nav ul.navbar-menu {
 
   
 }
-@media only screen and (min-width:1100px){
-   .well_box div{
-    border:2px dashed #fff; 
-   }
-}
+
 
 /* Define the animation called bouncingLoader. */
 @keyframes bouncingLoader {
