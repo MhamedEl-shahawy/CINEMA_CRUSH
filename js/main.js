@@ -518,8 +518,6 @@ function trend(){
           <div class="col-grid">
             <div class="well_box">
               <a onclick="callAll('${movie.id}','${movie.media_type}')" href="#">
-<<<<<<< HEAD
-=======
                <div>
                <span>${movie.original_title || movie.original_name}</span>
               </div>
@@ -616,7 +614,6 @@ function trend(){
           <div class="col-grid">
             <div class="well_box">
               <a onclick="callAll('${movie.id}','${movie.media_type}')" href="#">
->>>>>>> add more movies
                <div>
                <span>${movie.original_title || movie.original_name}</span>
               </div>
