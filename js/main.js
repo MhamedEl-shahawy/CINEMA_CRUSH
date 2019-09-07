@@ -693,11 +693,11 @@ function getTv(){
           <div class="title">
             <h1>${movie.name}</h1>
             <div class="rating">
-            <img src="img/star1.png" alt="" width="17" height="17" border="0">
-            <img src="img/star1.png" alt="" width="17" height="17" border="0">
-            <img src="img/star2.png" alt="" width="17" height="17" border="0">
-            <img src="img/star0.png" alt="" width="17" height="17" border="0">
-            <img src="img/star0.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star1.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star1.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star2.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star0.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star0.png" alt="" width="17" height="17" border="0">
         </div>
            </div> 
           <div class="movie_info">
@@ -845,11 +845,11 @@ function getMovie(data,i){
           <div class="title">
             <h1>${movie.title}</h1>
             <div class="rating">
-		        <img src="img/star1.png" alt="" width="17" height="17" border="0">
-		        <img src="img/star1.png" alt="" width="17" height="17" border="0">
-		        <img src="img/star2.png" alt="" width="17" height="17" border="0">
-		        <img src="img/star0.png" alt="" width="17" height="17" border="0">
-		        <img src="img/star0.png" alt="" width="17" height="17" border="0">
+		        <img src="/img/star1.png" alt="" width="17" height="17" border="0">
+		        <img src="/img/star1.png" alt="" width="17" height="17" border="0">
+		        <img src="/img/star2.png" alt="" width="17" height="17" border="0">
+		        <img src="/img/star0.png" alt="" width="17" height="17" border="0">
+		        <img src="/img/star0.png" alt="" width="17" height="17" border="0">
 		    </div>
            </div> 
           <div class="movie_info">
@@ -965,11 +965,11 @@ function getCast(){
           <div class="title">
             <h1>${movie.name}</h1>
             <div class="rating">
-            <img src="img/star1.png" alt="" width="17" height="17" border="0">
-            <img src="img/star1.png" alt="" width="17" height="17" border="0">
-            <img src="img/star2.png" alt="" width="17" height="17" border="0">
-            <img src="img/star0.png" alt="" width="17" height="17" border="0">
-            <img src="img/star0.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star1.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star1.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star2.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star0.png" alt="" width="17" height="17" border="0">
+            <img src="/img/star0.png" alt="" width="17" height="17" border="0">
         </div>
            </div> 
           <div class="movie_info">
